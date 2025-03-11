@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  background-color: #f7e4e4;
+  position: relative;
+  overflow: hidden;
+}
+
+.App {
+  text-align: center;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2; /* Ensure content stays above the bubbles */
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+.description,
+.card-count {
+  margin: 5px 0 20px;
+  font-size: 16px;
+  color: #333;
+}
+
+.flashcard-container {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  margin-bottom: 30px;
+}
+
+.flashcard {
+  width: 350px;
+  height: 200px;
+  text-align: center;
+  position: relative;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard .front,
+.flashcard .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 30px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  background-color: pink;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #333;
+}
+
+.flashcard .back {
+  transform: rotateY(180deg);
+}
+
+.navigation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.arrow-button {
+  padding: 15px;
+  font-size: 24px;
+  border: none;
+  background-color: rgb(245, 112, 141);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-button:hover {
+  background-color: rgb(242, 5, 84);
+}
+
+/* Create blurry background and floating multicolor bubbles */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent overlay */
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  z-index: 1; /* Place the blur effect behind the content */
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 50%;
+  animation: float 10s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.bubble-1 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(45deg, #ff7a18, #af002d, #320a36);
+  top: 20%;
+  left: 10%;
+}
+
+.bubble-2 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(45deg, #00b4d8, #0096c7, #0077b6);
+  top: 50%;
+  left: 30%;
+}
+
+.bubble-3 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #ff9a8b, #ff6a88, #d16ba5);
+  top: 60%;
+  left: 50%;
+}
+
+.bubble-4 {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(45deg, #a8e063, #56ab2f, #7b9a92);
+  top: 30%;
+  left: 70%;
+}
+
+.bubble-5 {
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(45deg, #f5a623, #d0021b, #8b572a);
+  top: 80%;
+  left: 80%;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
